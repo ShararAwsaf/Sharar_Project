@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<title>Device Health</title>
+		<meta name="description" content="device health">
+		
+		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+	</head>
+	<style>
+		body{
+			padding-top:10 px;
+		}
+	</style>
+
+	<body>
+		<div class="container">
+			<section>
+				<div class="page-heading">
+					<h2>
+						Device Health <small>: determine if the room is good for you or your device</small>
+					</h2>
+				</div><!--End Page Header-->
+
+				<div class="row">
+					<div class="col-lg-4">
+						<p><b>
+							Device Health is a simple app based on Raspberry Pi that allows user to determine a room's suitability for staying. It also comes with a free breath test to scan your breath's humidity too. Just blow at the heat sensor that's all you have to do.<br/>
+							The main inspiration for the project is ensuring the best possible environment for living of people and their devices. Also, efforts are being made to ensure the maximum device possibility in the room that will not hamper room's suitability for living.
+
+							Stay safe and enjoy!!!
+							</b>
+						</p>
+					</div><!--End Col of Description-->
+
+					<div class="col-lg-8">
+					<form action="" method = "post" class="form-horizontal" id="frm1">
+						<div class="form-group">
+							<label for="phone" class="col-lg-2 control-label"><!--Uses 2 blocks-->
+								<small>Number of phone(s)</small>
+							</label>
+							<div class="col-lg-10"><!--Nested columns: contain 12 blocks-->
+								<input type="text" class="form-control" id="phone" placeholder="Enter a number">
+							</div><!--End of Phone-->
+						</div><!--End of form group-->
+						<div class="form-group">
+							<label for="computer" class="col-lg-2 control-label"><!--Uses 2 blocks-->
+								 <small>Number of computer(s)</small>
+							</label>
+							<div class="col-lg-10"><!--Nested columns: contain 12 blocks-->
+								<input type="text" class="form-control" id="computer" placeholder="Enter a number">
+							</div><!--End of computer-->
+						</div><!--End of form group-->
+						<div class="form-group">
+							<label for="tv" class="col-lg-2 control-label"><!--Uses 2 blocks-->
+								<small>Number of tv(s)</small>
+							</label>
+							<div class="col-lg-10"><!--Nested columns: contain 12 blocks-->
+								<input type="text" class="form-control" id="tv" placeholder="Enter a number">
+							</div><!--End of tv-->
+						</div><!--End of form group-->
+						
+						<div class="form-group">
+							<label for="other" class="col-lg-2 control-label"><!--Uses 2 blocks-->
+								<small>Number of other appliance(s)</small>
+							</label>
+							<div class="col-lg-10"><!--Nested columns: contain 12 blocks-->
+								<input type="text" class="form-control" id="other" placeholder="Enter a number">
+							</div><!--End of other-->
+						</div><!--End of form group-->
+
+						<div class="form-group">
+							<div class="col-lg-10 col-lg-offset-2">
+								<input type="button" class="btn btn-primary" onclick="storeData()" value="Submit">
+							</div>
+						</div>
+					</form>
+					</div><!--End of Col of form of Message-->
+				</div><!--End row of Contact-->
+			</section>
+		</div><!--End Container-->
+		<script language="JavaScript">
+			
+			function storeData(){
+				var filePath = "/Users/sharar/Documents/internship/Sensor_connect/heat_sensor";
+				try{
+					//document.getElementById("frm1").submit();
+					
+					var num_phone = document.getElementById("phone").value;
+					var num_computer = document.getElementById("computer").value;
+					var num_tv = document.getElementById("tv").value;
+					var num_other = document.getElementById("other").value;
+					
+					/*DEBUG
+					console.log(num_phone);
+					*/
+
+					/*DEBUG*/
+					var fso = new ActiveXObject("Scripting.FileSystemObject");
+					
+					var s = fso.CreateTextFile("data_file.txt",true);
+					console.log("REACHED");
+					
+					//var s = new StreamWriter(filePath);
+
+					s.writeline("# Phone "+document.num_phone.value+"\n");
+					s.writeline("# Computer "+document.num_computer.value+"\n");
+					s.writeline("# TV "+document.num_tv.value+"\n");
+					s.writeline("# Other "+document.num_other.value+"\n");
+					s.close();
+					
+				}
+				catch(err){
+					var strErr = 'Error : ';
+					strErr += '\nNumber: '+err.number;
+					strErr += '\nDescription: '+err.description;
+					document.write(strErr);
+					console.log(err);
+				}
+			}
+		</script>
+
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!--Latest compiled and minified JavaScript-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

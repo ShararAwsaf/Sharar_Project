@@ -1,0 +1,13 @@
+Date : 08/29/2017
+Temperature(C) : 23
+Temperature(F) : 73.4
+Humidity : 31
+Room suitable for mobile phone
+Room suitable for tv
+Room suitable for other appliances
+Heat Index :71.9
+Temperature increase due to devices : 0.4
+GOOD # Room is comfortable
+Recommended clothing fabric : Cork or Cotton
+Recommended Maximum people entering the room : 5
+Room has comfortable humidity
